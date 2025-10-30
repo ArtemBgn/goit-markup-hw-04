@@ -50,6 +50,8 @@ img {
   border-bottom: 1px solid #e7e9fc;
   padding-top: 24px;
   padding-bottom: 24px;
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 header .container {
@@ -87,15 +89,31 @@ header .container {
 ::after {
   display: block;
 }
+.navbar-list-item {
+  position: relative;
+  /*color: #404bbf; /**/
+}
 
-.navbar-list-item:hover::after {
+/*.navbar-list-item:hover::after {
   content: '';
-  border-bottom: 4px solid #404bbf;
+  color: #404bbf;
+  position: absolute;
+  width: 100%;
+  bottom: -1px;
+  height: 4px;
+  background-color: #404bbf;
+  border-radius: 2px;
 } /**/
 
 .navbar-list-item-link:active::after {
   content: '';
-  border-bottom: 4px solid #404bbf;
+  color: #404bbf;
+  position: absolute;
+  width: 100%;
+  bottom: -1px;
+  height: 4px;
+  background-color: #404bbf;
+  border-radius: 2px;
 } /**/
 
 .navbar-list-item-link {
@@ -114,7 +132,6 @@ header .container {
 
 .navbar-list-item-link:active {
   color: #404bbf;
-  /*text-decoration: underline;/**/
 }
 
 .contacts {
@@ -141,14 +158,19 @@ header .container {
   background-color: #2e2f42;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /**/
   padding: 188px 0;
+  max-width: 1440px; /**/
+  margin-left: auto;
+  margin-right: auto;
   background-image: linear-gradient(
-      to top,
       rgba(46, 47, 66, 0.7),
       rgba(46, 47, 66, 0.7)
     ),
-    url(../images/people-office.jpg); /**/
+    url(../images/people-office.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /**/
 }
 
 .heading-title {
@@ -209,16 +231,23 @@ header .container {
 }
 
 .profit-list-item {
-  width: calc((100% - (3 * 24px)) / 4); /**/
+  width: calc((100% - (3 * 24px)) / 4);
+  /*box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08); /**/
 }
 
 .box-icon-advantages {
   padding: 24px 100px;
   margin-bottom: 8px;
-  width: 100%;
+  /*width: 100%;/**/
   border: 1px solid #8e8f99;
   border-radius: 4px;
   background-color: #f4f4fd;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; /**/
+  height: 112px;
 }
 
 .icon-advantages {
@@ -274,20 +303,39 @@ header .container {
 
 .box-icon-team {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 24px; /**/
   padding-top: 8px;
 }
 
-.icon {
+.box-icon-team-item {
   width: 40px;
-  height: 40px;
-  fill: #4d5ae5;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: 40px; /**/
 }
 
-.icon:hover {
-  fill: #31d0aa;
+.icon-link {
+  height: 100%;
+  width: 100%;
+  background-color: #4d5ae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.icon-link:hover,
+.icon-link:hover {
+  background-color: #404bbf;
+}
+
+.icon {
+  fill: #f4f4fd;
+}
+
+/*.icon:hover {
+  fill: #31d0aa;
+}*/
 
 .text {
   letter-spacing: 0.02em;
@@ -307,6 +355,21 @@ header .container {
 
 .briefcase-list-item {
   width: calc((100% - (2 * 24px)) / 3);
+  /*position: relative;
+  overflow: hidden;/**/
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.briefcase-list-item:hover {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.briefcase-list-item:hover p {
+  transform: translateY(0%);
+}
+
+.briefcase-list-item-img {
   position: relative;
   overflow: hidden;
 }
@@ -324,9 +387,11 @@ header .container {
 .briefcase-list-item-description {
   position: absolute;
   top: 0;
-  left: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
   padding: 40px 32px;
-  color: #fff;
+  color: #f4f4fd;
   width: 100%;
   height: 100%;
   background-color: #4d5ae5;
@@ -347,17 +412,11 @@ header .container {
 
 .container-vault {
   display: flex;
-  gap: 120px;
+  align-items: baseline;
 }
 
-.box-social-vault {
-  width: 208px;
-}
-
-.box-icon-vault {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
+.box-logo-vault {
+  margin-right: 120px;
 }
 
 .vault .logo .logo-half {
@@ -371,4 +430,39 @@ header .container {
 
 .vault .text {
   width: 264px;
+}
+
+.box-social-vault-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.box-icon-vault {
+  display: flex;
+  gap: 16px;
+}
+
+.box-icon-vault-item {
+  width: 40px;
+  height: 40px;
+}
+
+.box-icon-vault-item-link {
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.box-icon-vault-item-link:focus,
+.box-icon-vault-item-link:hover {
+  background-color: #31d0aa;
 }
